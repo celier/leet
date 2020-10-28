@@ -7,12 +7,19 @@ More formally check if there exists two indices i and j such that :
     0 <= i, j < arr.length
     arr[i] == 2 * arr[j]
 """
+import collections
 class Solution:
     def checkIfExist(self, arr: List[int]) -> bool:
         if len(arr) < 2:
             return False
         
-        res = [value * 2 for value in arr]
-        for x in res:
-            if x in arr:
+        s = collections.Counter(arr)
+    
+        #check if there are more than one zeros
+        if(s[0]>1):
+            return True
+
+        for num in arr:
+            if s[2*num] and num!=0:
                 return True
+        return False
