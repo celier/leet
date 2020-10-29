@@ -6,4 +6,12 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        return zip(nums1, nums2)
+        available_space = len(nums1) - len(nums2)
+         # Insert values first
+        for i in range(len(nums2)):
+            if nums1[available_space + i] == 0:
+                nums1[available_space + i] = nums2[i]
+        
+        # Then sort the array
+        nums1.sort()
+        
